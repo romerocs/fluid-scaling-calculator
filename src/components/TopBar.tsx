@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const TopBarStyled = styled.header`
   border-bottom: 1px solid var(--gray);

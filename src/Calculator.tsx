@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import { useState, useEffect, type JSX } from 'react';
+import { useState, useEffect } from 'react';
 import { InputMinSize, InputMaxSize, InputViewportMax, InputLabel, CopyButton, StyledCode } from './components/styles';
 import { PaneWrapper, PaneLeft, PaneRight } from "./components/Panes";
 import TopBar from './components/TopBar';
