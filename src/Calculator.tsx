@@ -53,19 +53,19 @@ function Calculator() {
   const [sizeMax, setSizeMax] = useState<number | undefined>(5)
   const [viewportMax, setViewportMax] = useState<number | undefined>(75)
   const [units, setUnits] = useState<Units>('rem')
-  const [clampStyle, setClampStyle] = useState<string>('clamp(3rem, 6.666666666666667vw, 5rem)');
   const [previewPaneIsExpanded, setPreviewPaneIsExpanded] = useState<boolean>(false);
   const [copyTextLabel, setCopyTextLabel] = useState<string>("Copy");
 
-  useEffect(() => {
-    if (sizeMin !== undefined && sizeMax !== undefined && viewportMax !== undefined) {
-      const viewportUnits = (sizeMax / viewportMax) * 100;
 
-      const style = `clamp(${sizeMin}${units}, ${viewportUnits}vw, ${sizeMax}${units})`;
+  const isValid =
+    sizeMin !== undefined &&
+    sizeMax !== undefined &&
+    viewportMax !== undefined &&
+    viewportMax > 0;
 
-      setClampStyle(style);
-    }
-  }, [viewportMax, sizeMax, sizeMin]);
+  const clampStyle = isValid
+    ? `clamp(${sizeMin}${units}, ${(sizeMax / viewportMax) * 100}vw, ${sizeMax}${units})`
+    : null;
 
 
   const toggleUnits = () => {
@@ -93,6 +93,8 @@ function Calculator() {
   }
 
   async function copyText() {
+    if (!clampStyle) return;
+
     try {
       await navigator.clipboard.writeText(clampStyle);
 
@@ -145,13 +147,13 @@ function Calculator() {
                   type="number"
                   min={1}
                   placeholder='Viewport Max'
-                  value={viewportMax === undefined || viewportMax === 0 ? '' : viewportMax}
-                  onChange={e => setViewportMax(Number(e.target.value))}
+                  value={viewportMax === undefined ? '' : viewportMax}
+                  onChange={e => setViewportMax(e.target.value === '' ? undefined : Number(e.target.value))}
                   style={{ width: '7ch' }} />
               </InputLabel>
             </div>
             <StyledCode>
-              {clampStyle ? clampStyle : 'error'}
+              {clampStyle ?? 'Enter a max viewport greater than 0'}
 
               <CopyButton onClick={copyText} onMouseLeave={resetCopyTextLabel} aria-label={copyTextLabel}></CopyButton>
             </StyledCode>
@@ -159,7 +161,7 @@ function Calculator() {
         </PaneLeft>
 
         <PaneRight isExpanded={previewPaneIsExpanded}>
-          <Preview fontSize={clampStyle} expandBtnHandler={previewPaneExpandedHandler} />
+          <Preview fontSize={clampStyle ?? '3rem'} expandBtnHandler={previewPaneExpandedHandler} />
         </PaneRight>
       </PaneWrapper>
     </>
