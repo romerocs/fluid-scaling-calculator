@@ -25,8 +25,11 @@ const StyledPaneRight = styled.div<{ $isExpanded: boolean }>`
   background-color: var(--white);
   padding: var(--s6);
   box-sizing: border-box;
-  transition: width 450ms cubic-bezier(0.195, 0.876, 0.015, 0.99);
   z-index: 5;
+  
+  @media screen and (prefers-reduced-motion: no-preference) {
+    transition: width 450ms cubic-bezier(0.195, 0.876, 0.015, 0.99);
+  }
 `;
 
 interface PaneProps {

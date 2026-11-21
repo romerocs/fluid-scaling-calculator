@@ -74,8 +74,10 @@ const StyledIconButton = styled.button<{ $labelIsVisible?: boolean }>`
     translate: -50% calc(100% * -1);
     visibility: ${props => props.$labelIsVisible !== true ? 'hidden' : 'visible'};
     opacity: ${props => props.$labelIsVisible !== true ? '0' : '1'};
-
-    transition: translate 250ms cubic-bezier(0, -0.014, 0, 1.29);
+    
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition: translate 250ms cubic-bezier(0, -0.014, 0, 1.29);
+    }
   }
 
   &:hover:after {

@@ -114,7 +114,7 @@ function Calculator() {
       <PaneWrapper>
         <PaneLeft>
           <div style={{ display: 'flex', gap: '2rem', flexDirection: 'column', alignItems: 'center' }}>
-            <UnitToggleButton onClick={toggleUnits} $unit={units}>
+            <UnitToggleButton onClick={toggleUnits} $unit={units} aria-label={units}>
               <UnitLabel $unit={units}>REM</UnitLabel>
               <UnitLabel $unit={units}>PX</UnitLabel>
             </UnitToggleButton>

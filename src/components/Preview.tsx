@@ -125,7 +125,7 @@ function Preview({ fontSize = '3rem', expandBtnHandler }: PreviewProps) {
     <div>
       <Toolbar />
       <StyledTextRegion>
-        {editMode ? <StyledTextArea id="editRegion" ref={textAreaRef} $fontSize={fontSize} onChange={(e) => setPreviewText(e.target.value)} /> : <StyledPreviewText $fontSize={fontSize}>{previewText}</StyledPreviewText>}
+        {editMode ? <StyledTextArea aria-label="Preview text" id="editRegion" ref={textAreaRef} $fontSize={fontSize} onChange={(e) => setPreviewText(e.target.value)} /> : <StyledPreviewText $fontSize={fontSize}>{previewText}</StyledPreviewText>}
       </StyledTextRegion>
     </div>
   )
