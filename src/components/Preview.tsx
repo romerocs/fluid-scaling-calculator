@@ -5,7 +5,7 @@ import { StyledIconButton } from './styles';
 
 const StyledPreviewText = styled.div<{ $fontSize: string }>`
   color: var(--black);
-  font-size: ${props => props.$fontSize ? props.$fontSize : '3rem'};
+  font-size: ${props => props.$fontSize ? props.$fontSize : 'var(--s3)'};
   transition: font-size 150ms;
   line-height: 1;
 `;
@@ -32,7 +32,7 @@ const StyledTextArea = styled.textarea<{ $fontSize: string }>`
   width: calc(100% - (var(--s6) * 2));
   height: calc(100% - (var(--s6) + var(--preview-toolbar-height)));
   font-family: var(--font);
-  font-size: ${props => props.$fontSize ? props.$fontSize : '3rem'};
+  font-size: ${props => props.$fontSize ? props.$fontSize : 'var(--s3)'};
   color: rgb(from var(--black) r g b / 0.75);
   border: none;
   background-color: transparent;

@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
 const InputBaseStyles = css`
-  background: white;
+  background: var(--white);
   padding: 12px 16px;
   border-radius: 6px;
   border: none;
   color: black;
-  font-size: 1.7rem;
+  font-size: var(--s2);
   max-width: 6ch;
 `;
 
@@ -14,14 +14,14 @@ const InputMinSize = styled.input`
   ${InputBaseStyles}
   
   border-radius: 6px 0px 0px 6px;
-  border-right: 1px solid #cccccc;
+  border-right: 1px solid var(--gray-light);
 `;
 
 const InputMaxSize = styled.input`
   ${InputBaseStyles}
   
   border-radius: 0px;
-  border-right: 1px solid #cccccc;
+  border-right: 1px solid var(--gray-light);
 `;
 
 const InputViewportMax = styled.input`
@@ -102,7 +102,7 @@ const StyledCode = styled.code`
   border: 1px solid var(--gray);
   padding: 6px 12px;
   border-radius: 4px;
-  background-color: #000000;
+  background-color: rgb(0 0 0);
 `
 
 export { InputMinSize, InputMaxSize, InputViewportMax, InputLabel, CopyButton, StyledCode, StyledIconButton };

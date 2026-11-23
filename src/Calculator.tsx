@@ -18,11 +18,11 @@ const UnitLabel = styled.span<{ $unit: Units }>`
   transition: color 150ms;
 
   &:first-child {
-    color: ${props => props.$unit === 'rem' ? 'black' : 'white'};
+    color: ${props => props.$unit === 'rem' ? 'var(--black)' : 'var(--white)'};
   }
 
   &:last-child {
-    color: ${props => props.$unit === 'px' ? 'black' : 'white'};
+    color: ${props => props.$unit === 'px' ? 'var(--black)' : 'var(--white)'};
   }
 `;
 
@@ -40,7 +40,7 @@ const UnitToggleButton = styled.button<{ $unit: Units }>`
     left: 0;
     top: 0;
     translate: ${props => props.$unit === 'rem' ? '0' : '100%'} 0;
-    background-color: white;
+    background-color: var(--white);
     width: 50%;
     height: 100%;
     z-index: 1;
